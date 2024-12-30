@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://cfexn2hl24wlt"]
+
+[ext_resource type="Script" path="res://scripts/health_item.gd" id="1_8hkir"]
+[ext_resource type="Texture2D" uid="uid://dx1p33p8rupev" path="res://assets/spritesheets/Fx/power-up.png" id="1_t83b8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrue2"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(0, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q85gm"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(23, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjkaa"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(46, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj67q"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(69, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybkkn"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(92, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcnjv"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(115, 0, 23, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y00lb"]
+atlas = ExtResource("1_t83b8")
+region = Rect2(138, 0, 23, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krrxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrue2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q85gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjkaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj67q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybkkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcnjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y00lb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0bwh"]
+radius = 9.0
+
+[node name="health_item" type="Node2D"]
+script = ExtResource("1_8hkir")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_krrxm")
+autoplay = "default"
+frame_progress = 0.681376
+
+[node name="health_box" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="health_box"]
+shape = SubResource("CircleShape2D_j0bwh")
+
+[connection signal="body_entered" from="health_box" to="." method="_on_health_box_body_entered"]

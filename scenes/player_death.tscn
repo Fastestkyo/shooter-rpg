@@ -1,0 +1,132 @@
+[gd_scene load_steps=19 format=3 uid="uid://le2ln83becy1"]
+
+[ext_resource type="Texture2D" uid="uid://bn5m4emxemfer" path="res://assets/sprites/Fx/Dark-Bolt.png" id="1_27b5t"]
+[ext_resource type="Script" path="res://scripts/player_death.gd" id="1_noyfi"]
+[ext_resource type="Texture2D" uid="uid://bwhoeh52bnbl7" path="res://assets/sprites/particle_death.png" id="2_0boj8"]
+
+[sub_resource type="Gradient" id="Gradient_uew0p"]
+offsets = PackedFloat32Array(0, 0.0245902, 0.97541, 0.991803, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.176471, 0.0509804, 0.25098, 1, 0.341176, 0.0980392, 0.486275, 1, 0.916955, 0.904301, 0.924469, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8w2xi"]
+gradient = SubResource("Gradient_uew0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jlaah"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 35.0
+direction = Vector3(0, -0.5, 0)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 30.0
+scale_min = 0.1
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_8w2xi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mae5"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(0, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgghf"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(64, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xwpk"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(128, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43f5l"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(192, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdvtg"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(256, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0syq"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(320, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pflsk"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(384, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfcua"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(448, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nypv"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(512, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqrex"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(576, 0, 64, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i55be"]
+atlas = ExtResource("1_27b5t")
+region = Rect2(640, 0, 64, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_05xwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mae5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgghf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xwpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43f5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdvtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0syq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pflsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfcua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nypv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqrex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i55be")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="player_death" type="Node2D"]
+script = ExtResource("1_noyfi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -41)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_jlaah")
+texture = ExtResource("2_0boj8")
+speed_scale = 1.5
+explosiveness = 0.5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -41)
+sprite_frames = SubResource("SpriteFrames_05xwk")
+frame = 10
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

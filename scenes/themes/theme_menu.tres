@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bdlaygt1f2hhj"]
+
+[ext_resource type="FontFile" uid="uid://de8gqdkggm2s" path="res://coins_and_stuff/Pixel Game.otf" id="1_4gtnn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4kgw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okrwg"]
+bg_color = Color(0.362071, 0.0845917, 0.454759, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjxja"]
+bg_color = Color(0.700828, 0.466852, 0.951729, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg3lr"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+bg_color = Color(0.32549, 0.215686, 0.580392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.269427, 0.0437166, 0.325259, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t5v8"]
+bg_color = Color(0.38632, 0.0416076, 0.443074, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0e0h"]
+bg_color = Color(0.282353, 0.121569, 0.462745, 0.694118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efq7e"]
+bg_color = Color(0.239216, 0, 0.352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifaru"]
+bg_color = Color(0.32549, 0.215686, 0.580392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0901961, 0, 0.137255, 1)
+
+[resource]
+default_font = ExtResource("1_4gtnn")
+default_font_size = 32
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_4gtnn")
+Button/styles/disabled = SubResource("StyleBoxFlat_m4kgw")
+Button/styles/focus = SubResource("StyleBoxFlat_okrwg")
+Button/styles/hover = SubResource("StyleBoxFlat_fjxja")
+Button/styles/normal = SubResource("StyleBoxFlat_fg3lr")
+Button/styles/pressed = SubResource("StyleBoxFlat_3t5v8")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 15
+MarginContainer/constants/margin_right = 15
+MarginContainer/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_m0e0h")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_efq7e")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_ifaru")

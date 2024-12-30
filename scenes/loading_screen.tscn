@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgagdu6gspkux"]
+
+[ext_resource type="Shader" path="res://scenes/themes/loading_screen.gdshader" id="1_w8yhj"]
+[ext_resource type="Texture2D" uid="uid://bmyl5vq8o6r8p" path="res://assets/loading/Cracks_05-128x128.png" id="2_6vn46"]
+[ext_resource type="Texture2D" uid="uid://ccjfgpp21l76n" path="res://assets/loading/Vein_07-128x128.png" id="3_an1ko"]
+[ext_resource type="Texture2D" uid="uid://0pryy00nq1s3" path="res://scenes/themes/loading_screen.tres" id="4_nio56"]
+[ext_resource type="Theme" uid="uid://bdlaygt1f2hhj" path="res://scenes/themes/theme_menu.tres" id="5_e4nuj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dagxw"]
+shader = ExtResource("1_w8yhj")
+shader_parameter/color_1 = Color(0.249219, 0.014294, 0.251068, 1)
+shader_parameter/color_2 = Color(0.360784, 0.196078, 0.454902, 1)
+shader_parameter/tilting_factor = 2.5
+shader_parameter/move_speed = 0.1
+shader_parameter/subtraction_speed = 2.5
+shader_parameter/cracks_texture = ExtResource("2_6vn46")
+shader_parameter/vein_texture = ExtResource("3_an1ko")
+
+[node name="loading_Screen" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_dagxw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_nio56")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("5_e4nuj")
+theme_override_colors/font_shadow_color = Color(0.169153, 0.000133611, 0.521665, 1)
+text = "LOADING..."
+
+[node name="Label2" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "[a] / [d] to move, [s] to crouch, [e] to shoot, [w] + [e] to shoot up, [s] + [e] to crouch shoot."
+horizontal_alignment = 1
+vertical_alignment = 1

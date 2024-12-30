@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://qeptx1rx1hbv"]
+
+[ext_resource type="Texture2D" uid="uid://cc2wlfvcvs26f" path="res://assets/environment/props/gate-03.png" id="1_eryo3"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_uylei"]
+[ext_resource type="Texture2D" uid="uid://cvp4shmaatymx" path="res://assets/environment/props/gate-02.png" id="3_mdlm0"]
+[ext_resource type="Texture2D" uid="uid://hjqw6vq3srb7" path="res://assets/environment/props/gate-01.png" id="4_ce6jr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l3nn"]
+atlas = ExtResource("1_eryo3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pq8tj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eryo3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mdlm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ce6jr")
+}],
+"loop": false,
+"name": &"close",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ce6jr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mdlm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l3nn")
+}],
+"loop": false,
+"name": &"open",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdq65"]
+size = Vector2(36, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc5e4"]
+size = Vector2(7, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5630x"]
+size = Vector2(50, 48)
+
+[node name="door" type="StaticBody2D"]
+z_index = 2
+script = ExtResource("1_uylei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -48)
+sprite_frames = SubResource("SpriteFrames_pq8tj")
+animation = &"open"
+autoplay = "close"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, -24)
+shape = SubResource("RectangleShape2D_jdq65")
+
+[node name="exit" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
+position = Vector2(3.5, -24)
+shape = SubResource("RectangleShape2D_rc5e4")
+
+[node name="activate" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="activate"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(61, -24)
+shape = SubResource("RectangleShape2D_5630x")
+
+[connection signal="body_entered" from="exit" to="." method="_on_exit_body_entered"]
+[connection signal="body_entered" from="activate" to="." method="_on_activate_body_entered"]
+[connection signal="body_exited" from="activate" to="." method="_on_activate_body_exited"]

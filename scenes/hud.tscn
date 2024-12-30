@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7plfyhu5hi4t"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_7yfpm"]
+[ext_resource type="PackedScene" uid="uid://drraw3vgynefm" path="res://scenes/health.tscn" id="1_u4gql"]
+[ext_resource type="Texture2D" uid="uid://cf6xulu5b6w2r" path="res://assets/sprites/Fx/impact/tile_0044.png" id="2_f45l1"]
+[ext_resource type="Theme" uid="uid://bdlaygt1f2hhj" path="res://scenes/themes/theme_menu.tres" id="2_yje8p"]
+[ext_resource type="Texture2D" uid="uid://7k8x3ys72bd" path="res://assets/sprites/Fx/impact/tile_0046.png" id="3_afruo"]
+[ext_resource type="Texture2D" uid="uid://cudji7d2g87u5" path="res://assets/spritesheets/collectibles/money.png" id="4_it2tn"]
+[ext_resource type="FontFile" uid="uid://de8gqdkggm2s" path="res://coins_and_stuff/Pixel Game.otf" id="6_llp85"]
+[ext_resource type="Texture2D" uid="uid://cqlvoapny48lg" path="res://coins_and_stuff/icons8-pause-12.png" id="7_8ytv5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d6bbx"]
+font = ExtResource("6_llp85")
+font_size = 20
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_7yfpm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme = ExtResource("2_yje8p")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="health" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_u4gql")]
+position = Vector2(-10, -10)
+heart1 = ExtResource("2_f45l1")
+heart0 = ExtResource("3_afruo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_yje8p")
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(-8.75, 1.25)
+scale = Vector2(1, 0.976)
+texture = ExtResource("4_it2tn")
+centered = false
+hframes = 5
+vframes = 12
+frame = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_llp85")
+text = "0"
+label_settings = SubResource("LabelSettings_d6bbx")
+
+[node name="paubutton" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_right = -80.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_8ytv5")
+stretch_mode = 0
+
+[connection signal="pressed" from="paubutton" to="." method="_on_paubutton_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://drraw3vgynefm"]
+
+[ext_resource type="Script" path="res://scripts/health.gd" id="1_ha28u"]
+[ext_resource type="Texture2D" uid="uid://cf6xulu5b6w2r" path="res://assets/sprites/Fx/impact/tile_0044.png" id="2_c30gc"]
+
+[node name="health" type="Node2D"]
+script = ExtResource("1_ha28u")
+
+[node name="heart" type="Sprite2D" parent="."]
+position = Vector2(9, 9)
+texture = ExtResource("2_c30gc")
+
+[node name="heart2" type="Sprite2D" parent="."]
+position = Vector2(27, 9)
+texture = ExtResource("2_c30gc")
+
+[node name="heart3" type="Sprite2D" parent="."]
+position = Vector2(45, 9)
+texture = ExtResource("2_c30gc")

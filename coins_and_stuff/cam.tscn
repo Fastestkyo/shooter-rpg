@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmq80mjwopdlf"]
+
+[ext_resource type="Script" path="res://scripts/cam.gd" id="1_omest"]
+
+[node name="cam" type="Camera2D" node_paths=PackedStringArray("char")]
+position = Vector2(53, -221)
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = -288
+limit_bottom = 0
+limit_smoothed = true
+rotation_smoothing_enabled = true
+script = ExtResource("1_omest")
+char = NodePath("")
+smoothing = true
+smoothing_distance = 6
