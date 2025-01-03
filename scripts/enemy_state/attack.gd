@@ -15,7 +15,7 @@ func on_physics_process(delta: float):
 	
 	if character.global_position > player.global_position:
 		animated.flip_h = false
-		dir = -1	
+		dir = -1
 	elif character.global_position < player.global_position:
 		animated.flip_h = true
 		dir = 1

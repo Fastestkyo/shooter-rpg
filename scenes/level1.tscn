@@ -12,11 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://clfvkfj6e5siu" path="res://coins_and_stuff/gem.tscn" id="10_s1r00"]
 [ext_resource type="PackedScene" uid="uid://dsw4osvguqnif" path="res://coins_and_stuff/dimon.tscn" id="11_aa2w7"]
 [ext_resource type="PackedScene" uid="uid://ch7aw6j8v4a7e" path="res://scenes/crab_enemy.tscn" id="12_1fitr"]
-[ext_resource type="PackedScene" uid="uid://ce486auoq4yk" path="res://scenes/mushroom_enemy.tscn" id="13_yhn1i"]
+[ext_resource type="PackedScene" uid="uid://ce486auoq4yk" path="res://scenes/octo_enemy.tscn" id="13_yhn1i"]
 [ext_resource type="PackedScene" uid="uid://qeptx1rx1hbv" path="res://scenes/door.tscn" id="14_x63pv"]
 [ext_resource type="PackedScene" uid="uid://cne7gvjeqh25d" path="res://scenes/key.tscn" id="15_jeomf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvbsr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcm7x"]
 texture = ExtResource("1_nj5uv")
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -187,7 +187,7 @@ texture = ExtResource("1_nj5uv")
 15:11/0 = 0
 16:11/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgf03"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv6jq"]
 texture = ExtResource("2_evyje")
 2:1/0 = 0
 3:1/0 = 0
@@ -277,7 +277,7 @@ texture = ExtResource("2_evyje")
 4:9/0 = 0
 10:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a48t0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dp8wo"]
 texture = ExtResource("3_vuj43")
 4:1/0 = 0
 5:1/0 = 0
@@ -307,14 +307,17 @@ texture = ExtResource("3_vuj43")
 
 [sub_resource type="TileSet" id="TileSet_na7t3"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_lvbsr")
-sources/1 = SubResource("TileSetAtlasSource_xgf03")
-sources/2 = SubResource("TileSetAtlasSource_a48t0")
+sources/0 = SubResource("TileSetAtlasSource_xcm7x")
+sources/1 = SubResource("TileSetAtlasSource_cv6jq")
+sources/2 = SubResource("TileSetAtlasSource_dp8wo")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1m3fw"]
 size = Vector2(109, 49)
 
 [node name="Level1" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("4_jnxju")]
+position = Vector2(69, -230)
 
 [node name="hud" parent="." instance=ExtResource("6_vstd6")]
 
@@ -330,12 +333,10 @@ layer_2/name = "fg"
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(-1114112, 393217, 1, -1048576, 393217, 2, -983040, 393217, 3, -1114111, 458753, 1, -1048575, 458753, 2, -983039, 458753, 3, -1114110, 524289, 1, -1048574, 524289, 2, -983038, 524289, 3, -1179642, 655361, 6, -1114106, 655361, 7, -1048570, 655361, 8, -983034, 655361, 9, -1179641, 720897, 6, -1114105, 720897, 7, -1048569, 720897, 8, -983029, 196609, 1, -917493, 196609, 2, -851957, 196608, 6, -983028, 262145, 1, -917492, 262145, 2, -851956, 262144, 6, -983035, 65536, 6, -983037, 524288, 6, -1048555, 655361, 6, -983019, 655361, 7, -917483, 655361, 8, -1048554, 720897, 6, -983018, 720897, 7, -917482, 720897, 8, -851947, 655361, 9, -917481, 131073, 1, -786409, 131073, 3, -917480, 196609, 1, -851944, 196609, 2, -786408, 196609, 3, -917479, 262145, 1, -851943, 262145, 2, -458749, 131073, 1, -327677, 131073, 3, -458748, 196609, 1, -393212, 196609, 2, -327676, 196609, 3, -458747, 262145, 1, -393211, 262145, 2, -262134, 524289, 7, -327672, 393217, 6, -262136, 393217, 7, -196600, 393217, 8, -327671, 458753, 6, -327670, 524289, 6, -196598, 524289, 8, -262135, 458753, 7, -196599, 458753, 8, -720888, 655361, 6, -655352, 655361, 7, -589816, 655361, 8, -524280, 655361, 9, -720887, 720897, 6, -655351, 720897, 7, -589815, 720897, 8, -655359, 655361, 6, -589823, 655361, 7, -524287, 655361, 8, -458751, 393216, 3, -655358, 720897, 6, -589822, 720897, 7, -524286, 720897, 8, -458752, 327680, 3, -393216, 327680, 4, -393215, 393216, 4, -524255, 655361, 6, -458719, 655361, 7, -393183, 655361, 8, -327647, 655361, 9, -524254, 720897, 6, -458718, 720897, 7, -393182, 720897, 8, -327652, 131073, 6, -262116, 131073, 7, -196580, 131073, 8, -131044, 131073, 9, -327651, 196609, 6, -262115, 196609, 7, -196579, 196609, 8, -131043, 196609, 9, -327650, 262145, 6, -262114, 262145, 7, -196578, 262145, 8, -131042, 262145, 9, -327649, 327681, 6, -262113, 327681, 7, -196577, 327681, 8, -393152, 1, 2, -327616, 1, 3, -393151, 65537, 2, -327615, 65537, 3, -327614, 131073, 3, -917444, 655361, 6, -851908, 655361, 7, -786372, 655361, 8, -720836, 655361, 9, -917443, 720897, 6, -851907, 720897, 7, -786371, 720897, 8, -1048522, 655361, 6, -982986, 655361, 7, -917450, 655361, 8, -851914, 655361, 9, -1048521, 720897, 6, -982985, 720897, 7, -917449, 720897, 8)
 
-[node name="player" parent="." instance=ExtResource("4_jnxju")]
-position = Vector2(53, -221)
-
 [node name="ParallaxBackground" parent="." instance=ExtResource("5_8pjib")]
 
 [node name="cam" parent="." node_paths=PackedStringArray("char") instance=ExtResource("7_ulp1l")]
+position = Vector2(68, -249)
 limit_right = 1200
 char = NodePath("../player")
 
@@ -477,6 +478,13 @@ offset_top = -229.0
 offset_right = 893.0
 offset_bottom = -206.0
 text = "[e] to shoot!"
+
+[node name="Label8" type="Label" parent="labels"]
+offset_left = 112.0
+offset_top = -262.0
+offset_right = 791.0
+offset_bottom = -239.0
+text = "[a],[d] / [<-], [->] to move"
 
 [node name="Label2" type="Label" parent="labels"]
 offset_left = 358.0

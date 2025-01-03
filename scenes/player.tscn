@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://7xuwtrvdobua"]
+[gd_scene load_steps=74 format=3 uid="uid://7xuwtrvdobua"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_a2waj"]
 [ext_resource type="Texture2D" uid="uid://6wmaddii7lca" path="res://assets/spritesheets/player/player-idle.png" id="1_u1bt0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3ftglnb75dv7" path="res://assets/spritesheets/player/player-run-shoot.png" id="3_8vs24"]
 [ext_resource type="Texture2D" uid="uid://h8ujv0y1qcn7" path="res://assets/spritesheets/player/player-cling.png" id="3_dg64y"]
 [ext_resource type="Texture2D" uid="uid://b31uowqhk367p" path="res://assets/spritesheets/player/player-jump.png" id="3_s4ty6"]
+[ext_resource type="Texture2D" uid="uid://cgx1k1d373my" path="res://assets/spritesheets/Fx/enemy-death.png" id="4_ufv08"]
 [ext_resource type="Texture2D" uid="uid://cvyoyry0tuh55" path="res://assets/spritesheets/player/player-duck.png" id="7_a4cq1"]
 [ext_resource type="Texture2D" uid="uid://bfl5wnjuucf41" path="res://assets/spritesheets/player/player-stand.png" id="9_56j6k"]
 [ext_resource type="Texture2D" uid="uid://decdlmdgjwswx" path="res://assets/spritesheets/player/player-shoot-up.png" id="10_ehcrd"]
@@ -20,6 +21,9 @@
 [ext_resource type="Script" path="res://scripts/shoot_crouch.gd" id="18_nljey"]
 [ext_resource type="Script" path="res://scripts/player_state/shoot_run.gd" id="19_oq25p"]
 [ext_resource type="Script" path="res://scripts/player_state/shoot_wall_cling.gd" id="20_5ejng"]
+[ext_resource type="AudioStream" uid="uid://dapobwu27r8hp" path="res://assets/sounds/sound3.mp3" id="22_tm48w"]
+[ext_resource type="AudioStream" uid="uid://dak2y5asijyf8" path="res://assets/sounds/shoot-6-81136.mp3" id="23_npmb3"]
+[ext_resource type="AudioStream" uid="uid://cdytty0jhnls7" path="res://assets/sounds/walking-on-leaves-260279.mp3" id="24_d2o2u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yafp7"]
 shader = ExtResource("2_psac2")
@@ -29,6 +33,26 @@ shader_parameter/hit_color = Color(0.552539, 0, 0.0189144, 1)
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8gca"]
 atlas = ExtResource("3_dg64y")
 region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl0rq"]
+atlas = ExtResource("4_ufv08")
+region = Rect2(0, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_215rp"]
+atlas = ExtResource("4_ufv08")
+region = Rect2(67, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbnyc"]
+atlas = ExtResource("4_ufv08")
+region = Rect2(134, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xn12"]
+atlas = ExtResource("4_ufv08")
+region = Rect2(201, 0, 67, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv8hq"]
+atlas = ExtResource("4_ufv08")
+region = Rect2(268, 0, 67, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwvgy"]
 atlas = ExtResource("2_m86h1")
@@ -190,6 +214,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"cling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl0rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_215rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbnyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xn12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv8hq")
+}],
+"loop": false,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -362,14 +406,15 @@ height = 36.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_18hkh"]
 
-[node name="player" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 2
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("death") groups=["Player"]]
+collision_layer = 3
 script = ExtResource("1_a2waj")
+death = NodePath("death")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_yafp7")
 sprite_frames = SubResource("SpriteFrames_fxfca")
-animation = &"cling"
+animation = &"death"
 autoplay = "idle"
 offset = Vector2(0, -24)
 
@@ -411,12 +456,15 @@ anim = NodePath("../../AnimatedSprite2D")
 script = ExtResource("14_lqefi")
 chara = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
-speed = 510
+speed = 100
+max_hori = 150
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("15_e4p5s")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+jump_horizontal_speed = 100
+max_jump_horizontal_speed = 200
 max_jump_count = 2
 
 [node name="ShootStand" type="Node" parent="StateMachine" node_paths=PackedStringArray("char", "anim", "muzzle")]
@@ -455,12 +503,27 @@ wait_time = 0.432
 
 [node name="death" type="Timer" parent="."]
 wait_time = 1.026
+one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -20)
 shape = SubResource("CircleShape2D_18hkh")
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("22_tm48w")
+bus = &"sfx"
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("23_npmb3")
+bus = &"sfx"
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource("24_d2o2u")
+bus = &"sfx2"
 
 [connection signal="timeout" from="jump_cooldown" to="." method="_on_jump_cooldown_timeout"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

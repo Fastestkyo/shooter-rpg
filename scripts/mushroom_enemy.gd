@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var health_amt: int = 3
+@export var health_amt: int = 1
 @export var dmg_amt : int = 1
 const enemy_deathfx = preload("res://scenes/enemy_death.tscn")
 

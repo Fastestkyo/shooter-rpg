@@ -5,6 +5,7 @@ var bullet = preload("res://scenes/bullet.tscn")
 @export var anim : AnimatedSprite2D
 @export var muzzle : Marker2D
 @export var hold_gun_time : float = 2.0
+@onready var audio: AudioStreamPlayer2D = $"../../sounds/AudioStreamPlayer2D2"
 
 var muzzle_position : Vector2
 
@@ -66,4 +67,5 @@ func gun_shoot():
 	bullet_inst.move_x_direction = true
 	bullet_inst.global_position = muzzle.global_position
 	anim.play("shoot_stand")
+	audio.playing = true
 	get_parent().add_child(bullet_inst)

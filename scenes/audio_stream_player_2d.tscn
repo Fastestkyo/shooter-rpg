@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fhoji6yv2d3f"]
+
+[ext_resource type="AudioStream" uid="uid://boiecl7rxjjvf" path="res://assets/sounds/action-255730.mp3" id="1_q48s3"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_q48s3")
+autoplay = true
+bus = &"bgmusic"
