@@ -1,21 +1,21 @@
 extends NodeState
 
 var bullet = preload("res://scenes/bullet.tscn")
-@export var char : CharacterBody2D
+@export var chara : CharacterBody2D
 @export var anim : AnimatedSprite2D
 @export var muzzle : Marker2D
 @onready var audio: AudioStreamPlayer2D = $"../../sounds/AudioStreamPlayer2D2"
 var muzzle_position : Vector2
 
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 
 
 
 
 
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	
 	gun_muzzle_position()
 	
@@ -27,7 +27,7 @@ func on_physics_process(delta : float):
 	# run state
 	var direction : float = GameInputEvents.movement_input()
 	
-	if direction and char.is_on_floor():
+	if direction and chara.is_on_floor():
 		transition.emit("Run")
 	
 	# jump state

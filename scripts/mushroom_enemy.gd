@@ -12,7 +12,6 @@ const enemy_deathfx = preload("res://scenes/enemy_death.tscn")
 	
 
 func _on_attack_area_area_entered(area: Area2D) -> void:
-	print("hitbox entered")
 	if area.get_parent().has_method("get_dmg"):
 		var node = area.get_parent() as Node
 		health_amt -= node.dmg

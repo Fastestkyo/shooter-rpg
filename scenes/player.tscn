@@ -442,9 +442,9 @@ debug_color = Color(0.910663, 0.222269, 0.500442, 0.42)
 script = ExtResource("11_d7j74")
 initial_node_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("char", "anim")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("chara", "anim")]
 script = ExtResource("12_6vdys")
-char = NodePath("../..")
+chara = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("chara", "anim")]
@@ -467,9 +467,9 @@ jump_horizontal_speed = 100
 max_jump_horizontal_speed = 200
 max_jump_count = 2
 
-[node name="ShootStand" type="Node" parent="StateMachine" node_paths=PackedStringArray("char", "anim", "muzzle")]
+[node name="ShootStand" type="Node" parent="StateMachine" node_paths=PackedStringArray("chara", "anim", "muzzle")]
 script = ExtResource("16_snb2a")
-char = NodePath("../..")
+chara = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 muzzle = NodePath("../../muzzle")
 hold_gun_time = 1.0
@@ -480,15 +480,15 @@ character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 muzzle = NodePath("../../muzzle")
 
-[node name="ShootCrouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("char", "anim", "muzzle")]
+[node name="ShootCrouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("chara", "anim", "muzzle")]
 script = ExtResource("18_nljey")
-char = NodePath("../..")
+chara = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 muzzle = NodePath("../../muzzle")
 
-[node name="ShootRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("char", "anim", "muzzle")]
+[node name="ShootRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("chara", "anim", "muzzle")]
 script = ExtResource("19_oq25p")
-char = NodePath("../..")
+chara = NodePath("../..")
 anim = NodePath("../../AnimatedSprite2D")
 muzzle = NodePath("../../muzzle")
 

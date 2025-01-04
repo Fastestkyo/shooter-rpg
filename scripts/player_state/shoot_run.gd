@@ -1,7 +1,7 @@
 extends NodeState
 
 var bullet = preload("res://scenes/bullet.tscn")
-@export var char : CharacterBody2D
+@export var chara : CharacterBody2D
 @export var anim : AnimatedSprite2D
 @export var muzzle : Marker2D
 @onready var audio: AudioStreamPlayer2D = $"../../sounds/AudioStreamPlayer2D2"
@@ -12,7 +12,7 @@ var bullet = preload("res://scenes/bullet.tscn")
 var muzzle_position : Vector2
 
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 
 
@@ -21,7 +21,7 @@ func on_hold_gun_timout():
 
 
 
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	var dir = GameInputEvents.movement_input()
 	gun_muzzle_position(dir)
 	
@@ -29,14 +29,14 @@ func on_physics_process(delta : float):
 		gun_shoot(dir)
 	
 	if dir:
-		char.velocity.x += dir*speed
-		char.velocity.x = clamp(char.velocity.x, -max_hori, max_hori)
+		chara.velocity.x += dir*speed
+		chara.velocity.x = clamp(chara.velocity.x, -max_hori, max_hori)
 	if dir != 0:
 		anim.flip_h = false if dir > 0 else true
-	char.move_and_slide()
+	chara.move_and_slide()
 	
 	
-	if !char.is_on_floor():
+	if !chara.is_on_floor():
 		transition.emit("Fall")
 	if dir == 0:
 		transition.emit("Idle")

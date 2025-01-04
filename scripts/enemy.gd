@@ -83,11 +83,11 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print("hitbox entered")
+
 	if area.get_parent().has_method("get_dmg"):
 		var node = area.get_parent() as Node
 		health_amt -= node.dmg
-		print(health_amt)
+
 		
 		if health_amt <= 0:
 			var enemy_deathfx_instance = enemy_deathfx.instantiate() as Node2D

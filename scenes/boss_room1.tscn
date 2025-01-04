@@ -326,12 +326,13 @@ layer_2/tile_data = PackedInt32Array(-327680, 393217, 1, -262144, 393217, 2, -19
 [node name="player" parent="." instance=ExtResource("6_2uj5y")]
 position = Vector2(205, -32)
 
-[node name="cam" parent="player" node_paths=PackedStringArray("char") instance=ExtResource("5_rgs7b")]
+[node name="cam" parent="player" instance=ExtResource("5_rgs7b")]
 position = Vector2(0, -16)
 zoom = Vector2(2, 2)
 limit_top = -304
 limit_right = 1136
-char = NodePath("..")
+position_smoothing_enabled = true
+script = null
 
 [node name="plats" type="Node" parent="."]
 

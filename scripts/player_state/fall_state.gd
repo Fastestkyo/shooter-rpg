@@ -7,7 +7,7 @@ extends NodeState
 const GRAVITY :int = 1700
 var coyote_jump:bool
 
-func on_process(delta: float):
+func on_process(_delta: float):
 	pass
 
 func on_physics_process(delta: float):

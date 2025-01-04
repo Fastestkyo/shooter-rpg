@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://n5a7mvimo2nr"]
+[gd_scene load_steps=20 format=3 uid="uid://n5a7mvimo2nr"]
 
 [ext_resource type="Texture2D" uid="uid://dxgh4khgip8sy" path="res://assets/environment/layers/tilesets.png" id="1_nj1g0"]
 [ext_resource type="Texture2D" uid="uid://ltjmwu0pehad" path="res://assets/environment/layers/props.png" id="2_3gewr"]
 [ext_resource type="Texture2D" uid="uid://btmq8naan25bp" path="res://assets/environment/layers/walls.png" id="3_glcri"]
 [ext_resource type="PackedScene" uid="uid://7xuwtrvdobua" path="res://scenes/player.tscn" id="4_twg4b"]
 [ext_resource type="PackedScene" uid="uid://bocn0pdk13oi7" path="res://scenes/parallax_background.tscn" id="5_mcnw4"]
-[ext_resource type="Script" path="res://scripts/cam.gd" id="6_try0s"]
 [ext_resource type="PackedScene" uid="uid://cne7gvjeqh25d" path="res://scenes/key.tscn" id="7_ggxwk"]
 [ext_resource type="PackedScene" uid="uid://qeptx1rx1hbv" path="res://scenes/door.tscn" id="8_f560g"]
 [ext_resource type="PackedScene" uid="uid://c7plfyhu5hi4t" path="res://scenes/hud.tscn" id="9_wjtgx"]
@@ -331,21 +330,18 @@ layer_2/tile_data = PackedInt32Array(-262139, 1, 2, -196603, 1, 3, -262138, 6553
 [node name="player" parent="." instance=ExtResource("4_twg4b")]
 position = Vector2(61, -40)
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("5_mcnw4")]
-
-[node name="cam" type="Camera2D" parent="." node_paths=PackedStringArray("char")]
-position = Vector2(58, -55)
+[node name="cam" type="Camera2D" parent="player"]
+position = Vector2(-3, -15)
 zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = -304
 limit_right = 1424
 limit_bottom = 0
 limit_smoothed = true
+position_smoothing_enabled = true
 rotation_smoothing_enabled = true
-script = ExtResource("6_try0s")
-char = NodePath("../player")
-smoothing = true
-smoothing_distance = 6
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("5_mcnw4")]
 
 [node name="doorset" type="Node" parent="."]
 

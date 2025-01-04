@@ -9,11 +9,11 @@ var bullet = preload("res://scenes/bullet.tscn")
 @onready var audio: AudioStreamPlayer2D = $"../../sounds/AudioStreamPlayer2D2"
 var muzzle_position : Vector2
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 
 
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	
 	gun_muzzle_position()
 	
@@ -57,7 +57,7 @@ func gun_muzzle_position():
 
 
 func gun_shooting():
-	var direction : float = -1 if animated_sprite_2d.flip_h == true else 1
+	var _direction : float = -1 if animated_sprite_2d.flip_h == true else 1
 	
 	var bullet_instance = bullet.instantiate() as Node2D
 	bullet_instance.dir = -1

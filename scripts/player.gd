@@ -15,7 +15,6 @@ func player_death():
 	player_deathinst.global_position = global_position
 	get_parent().add_child(player_deathinst)
 	anim.play("death")
-	anim.visible = false
 	get_tree().reload_current_scene()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

@@ -827,6 +827,7 @@ grow_vertical = 2
 text = "Boss Deafeated"
 
 [node name="debu" type="Label" parent="."]
+visible = false
 offset_left = -35.0
 offset_top = -48.0
 offset_right = 22.0

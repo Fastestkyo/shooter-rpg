@@ -7,26 +7,26 @@ static func movement_input() -> float:
 
 
 static func jump_input() -> bool:
-	var jump_input : bool = Input.is_action_just_pressed("ui_accept")
-	return jump_input
+	var jump_inputa : bool = Input.is_action_just_pressed("ui_accept")
+	return jump_inputa
 
 static func shoot_input() -> bool:
-	var shoot_input : bool = Input.is_action_just_pressed("shoot")
-	return shoot_input
+	var shoot_inputa : bool = Input.is_action_just_pressed("shoot")
+	return shoot_inputa
 	
 static func shoot_up_input() -> bool:
-	var shoot_input : bool = Input.is_action_just_pressed("shoot")
-	var up_input : bool = Input.is_action_pressed("face_up")
-	return up_input and shoot_input
+	var shoot_inputa : bool = Input.is_action_just_pressed("shoot")
+	var up_inputa : bool = Input.is_action_pressed("face_up")
+	return up_inputa and shoot_inputa
 
 static func crouch_input() -> bool:
-	var crouch_input : bool = Input.is_action_just_pressed("crouch")
-	return crouch_input
+	var crouch_inputa : bool = Input.is_action_just_pressed("crouch")
+	return crouch_inputa
 
 static func fall_input() -> bool:
-	var force_fall_input : bool = Input.is_action_just_pressed("force_fall")
-	return force_fall_input
+	var force_fall_inputa : bool = Input.is_action_just_pressed("force_fall")
+	return force_fall_inputa
 
 static func wall_cling() -> bool:
-	var wall_cling : bool = Input.is_action_just_pressed("wall_cling")
-	return wall_cling
+	var wall_clinga : bool = Input.is_action_just_pressed("wall_cling")
+	return wall_clinga

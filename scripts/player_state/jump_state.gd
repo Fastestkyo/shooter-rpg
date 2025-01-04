@@ -17,7 +17,7 @@ var current_jump_count : int
 var coyote_jump : bool
 var cooldown_coyote : bool = true
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 
 

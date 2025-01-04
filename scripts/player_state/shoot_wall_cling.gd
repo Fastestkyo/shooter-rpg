@@ -9,11 +9,11 @@ var bullet = preload("res://scenes/bullet.tscn")
 var wall_cling_direction : Vector2
 var muzzle_position : Vector2
 
-func on_process(delta : float):
+func on_process(_delta : float):
 	pass
 
 
-func on_physics_process(delta : float):
+func on_physics_process(_delta : float):
 	character_body_2d.velocity.y = 0
 	
 	var direction : float = GameInputEvents.movement_input()

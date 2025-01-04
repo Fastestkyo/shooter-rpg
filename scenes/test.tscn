@@ -319,12 +319,11 @@ layer_2/z_index = 1
 [node name="player" parent="." instance=ExtResource("4_cgrqg")]
 position = Vector2(15, -4)
 
-[node name="cam" parent="." node_paths=PackedStringArray("char") instance=ExtResource("5_kf84m")]
+[node name="cam" parent="." instance=ExtResource("5_kf84m")]
 position = Vector2(68, -225)
 limit_left = -1215752192
 limit_top = -1316134912
 limit_right = 1000000000
 limit_bottom = 1410065408
-char = NodePath("../player")
 
 [node name="hud" parent="." instance=ExtResource("6_y8fev")]

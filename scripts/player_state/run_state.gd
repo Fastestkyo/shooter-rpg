@@ -8,10 +8,10 @@ extends NodeState
 @export var speed: int = 150  
 @export var max_hori:int = 300
 
-func on_process(delta: float):
+func on_process(_delta: float):
 	pass
 
-func on_physics_process(delta: float):
+func on_physics_process(_delta: float):
 	var dir: float = GameInputEvents.movement_input()
 	if dir:
 		chara.velocity.x += dir * speed
