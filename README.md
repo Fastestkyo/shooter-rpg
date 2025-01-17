@@ -15,3 +15,5 @@ basically a platformer-rpg game in godot.
 upd1
 -added boss
 -made it more easy
+
+https://fastestkyo2-real.itch.io/idk <- my laptops ass so heres the game link~!
