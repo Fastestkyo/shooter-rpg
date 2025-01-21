@@ -17,3 +17,5 @@ upd1
 -made it more easy
 
 https://fastestkyo2-real.itch.io/idk <- my laptops ass so heres the game link~!
+
+(used tutorial but modded everything)
